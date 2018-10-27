@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>singwa-swoole-ws测试</title>
+</head>
+<body>
+	<h1>singwa-swoole-ws测试</h1>
+</body>
+<script type="text/javascript">
+	var wsUrl = "ws://45.77.33.84:8812";
+
+	var websocket = new WebSocket(wsUrl);
+	console.log(websocket);
+
+	//实例对象的onopen
+	websocket.onopen = function(evt) {
+      websocket.send("hello-sinwa");
+      console.log("conected-swoole-success");
+    }
+
+	// 实例化 onmessage
+    websocket.onmessage = function(evt) {
+      console.log("ws-server-return-data:" + evt.data);
+    }
+
+	//onclose
+    websocket.onclose = function(evt) {
+      console.log("close");
+    }
+
+	websocket.onerror = function(evt, e) {
+      console.log("error:" + evt.data);
+    }
+
+</script>
+</html>
